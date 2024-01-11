@@ -1,0 +1,11 @@
+argo-cd:
+  dex:              #Disable integration with external auth providers
+    enabled: false
+  notifications:    #Disable notifs controller
+    enabled: false
+  applicationSet:   #Disable ApplicationSet Controller
+    enabled: false
+  server:
+    extraArgs:
+      - --insecure  # to server the web ui over http, since it is just a local cluster for demo
+
