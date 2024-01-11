@@ -9,3 +9,5 @@ argo-cd:
     extraArgs:
       - --insecure  # to server the web ui over http, since it is just a local cluster for demo
 
+crds:
+  install: false
