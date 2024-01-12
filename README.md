@@ -72,6 +72,8 @@ $ helm template charts/root-app/ | kubectl apply -f -
 
 ![Screenshot of the final result](/docs/assets/images/final_result.png)
 
+- The apps in the screenshot above are from: https://github.com/k-candidate/hello-k8s and https://github.com/k-candidate/hello-prod
+
 ## Things to do differently in a real env:
 - [ ] Do not use minikube :smiley:
 - [ ] Use HA for argocd.
