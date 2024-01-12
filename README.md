@@ -21,7 +21,7 @@
 `$ helm install argo-cd charts/argo-cd/ -n argocd`
 
 ### Port-forward to access the web ui
-### This is just for demos. In a real env, hook it to an ALB, give it SSL/TLS termination, and set DNS for it
+This is just for demos. In a real env, hook it to an ALB, give it SSL/TLS termination, and set DNS for it
 `$ kubectl port-forward svc/argo-cd-argocd-server 8080:443 -n argocd`
 
 ### Username is admin. Get password:
@@ -46,9 +46,10 @@
 
 ### Now we can add all the apps we want to charts/root-app/templates/
 
-
+![Screenshot of the final result](/docs/assets/images/final_result.png)
 
 ## Things to do differently in a real env:
 ### - Use HA for argocd.
 ### - Project templates to group apps depending on teams, repos, destinations (cluster/ns), objects to restrict, roles (rbac).
+### - Use a policy engine like OPA Gatekeeper (does not allow resource mutation) or Kyverno (does allow for mutation, but still incubating)
 
