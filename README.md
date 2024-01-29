@@ -79,4 +79,8 @@ $ helm template charts/root-app/ | kubectl apply -f -
 - [ ] Use HA for argocd.
 - [ ] Project templates to group apps depending on teams, repos, destinations (cluster/ns), object restriction, roles (rbac).
 - [ ] Use a policy engine like OPA Gatekeeper (does not allow resource mutation) or Kyverno (does allow for mutation, but still incubating)
+- [x] Add KEDA for Autoscaling.
+- [ ] Add KEDA HTTP Add-on.
+- [ ] Add Prometheus.
+- [ ] Add Grafana.
 
