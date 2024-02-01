@@ -8,6 +8,11 @@ argo-cd:
   server:
     extraArgs:
       - --insecure  # to server the web ui over http, since it is just a local cluster for demo
+    ingress:
+      enabled: true
+      ingressClassName: "nginx"
+      hosts:
+        - argocd.kcan.io
 
 crds:
   install: false
