@@ -9,16 +9,30 @@ spec:
   project: default
   source:
     repoURL: https://prometheus-community.github.io/helm-charts
-    chart: prometheus
-    targetRevision: 25.10.0
+    chart: kube-prometheus-stack
+    targetRevision: 56.6.0
     helm:
       values: |
-        server:
-          service:
-            nodePort: 31090
-            type: NodePort
-        prometheus-pushgateway:
-          enabled: false
+        namespaceOverride: "monitoring"
+        grafana:
+          enabled: true
+          namespaceOverride: "monitoring"
+          defaultDashboardsEnabled: true
+          ingress:
+            enabled: true
+            ingressClassName: nginx
+            hosts:
+              - grafana.kcan.io
+        prometheus:
+          enabled: true
+          ingress:
+            enabled: true
+            ingressClassName: nginx
+            hosts:
+              - prometheus.kcan.io
+          #for persistent storage
+          #prometheusSpec:
+          #  storageSpec: {}
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
