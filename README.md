@@ -79,8 +79,8 @@ $ helm template charts/root-app/ | kubectl apply -f -
 - [ ] Use a policy engine like OPA Gatekeeper (does not allow resource mutation) or Kyverno (does allow for mutation, but still incubating)
 - [x] Add KEDA for Autoscaling.
 - [x] Add KEDA HTTP Add-on.
-- [ ] Add Prometheus. WIP...
-- [ ] Add Grafana.
+- [x] Add Prometheus.
+- [x] Add Grafana.
 - [ ] Add OpenCost.
 - [ ] Migrate to a cluster instead of Minikube as I already hit the ceiling (of default minikube) after adding KEDA, and Prometheus.
 - [ ] Use HA for argocd. Requires 3 nodes.
