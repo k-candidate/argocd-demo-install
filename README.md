@@ -75,11 +75,12 @@ $ helm template charts/root-app/ | kubectl apply -f -
 - The apps in the screenshot above are from: https://github.com/k-candidate/hello-k8s and https://github.com/k-candidate/hello-prod
 
 ## TO DO:
-- [ ] Use HA for argocd.
 - [ ] Project templates to group apps depending on teams, repos, destinations (cluster/ns), object restriction, roles (rbac).
 - [ ] Use a policy engine like OPA Gatekeeper (does not allow resource mutation) or Kyverno (does allow for mutation, but still incubating)
 - [x] Add KEDA for Autoscaling.
-- [ ] Add KEDA HTTP Add-on. WIP...
+- [x] Add KEDA HTTP Add-on.
 - [ ] Add Prometheus. WIP...
 - [ ] Add Grafana.
+- [ ] Add OpenCost.
 - [ ] Migrate to a cluster instead of Minikube as I already hit the ceiling (of default minikube) after adding KEDA, and Prometheus.
+- [ ] Use HA for argocd. Requires 3 nodes.
