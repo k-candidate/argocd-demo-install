@@ -81,6 +81,6 @@ $ helm template charts/root-app/ | kubectl apply -f -
 - [x] Add KEDA HTTP Add-on.
 - [x] Add Prometheus.
 - [x] Add Grafana.
-- [ ] Add OpenCost.
+- [x] Add OpenCost.
 - [ ] Migrate to a cluster instead of Minikube as I already hit the ceiling (of default minikube) after adding KEDA, and Prometheus.
 - [ ] Use HA for argocd. Requires 3 nodes.
