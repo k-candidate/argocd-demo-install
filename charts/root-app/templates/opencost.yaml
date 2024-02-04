@@ -9,8 +9,8 @@ spec:
   project: default
   source:
     repoURL: https://opencost.github.io/opencost-helm-chart
-    chart: opencost-charts/opencost
-    targetRevision: 1.29.0-helm
+    chart: opencost
+    targetRevision: 1.29.0
     helm:
       values: |
         opencost:
@@ -41,9 +41,15 @@ spec:
               enabled: false
             external:
               enabled: true
-              url: "http:http://prometheus.kcan.io"
+              url: "http://prometheus.kcan.io"
           ui:
             enabled: true
+            ingress:
+              enabled: true
+              hosts:
+                - host: opencost.kcan.io
+                  paths:
+                    - /
           metrics:
             serviceMonitor:
               enabled: false
