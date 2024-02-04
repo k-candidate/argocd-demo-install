@@ -1,0 +1,58 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: opencost
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: https://opencost.github.io/opencost-helm-chart
+    chart: opencost-charts/opencost
+    targetRevision: 1.29.0-helm
+    helm:
+      values: |
+        opencost:
+          customPricing:
+            enabled: true
+            configmapName: custom-pricing-model
+            configPath: /tmp/custom-config
+            createConfigmap: true
+            costModel:
+              description: Made up prices for PoC as it is an on-prem cluster
+              CPU: 1.25
+              spotCPU: 0.006655
+              RAM: 0.50
+              spotRAM: 0.000892
+              GPU: 0.95
+              storage: 0.25
+              zoneNetworkEgress: 0.01
+              regionNetworkEgress: 0.01
+              internetNetworkEgress: 0.12
+          exporter:
+            defaultClusterId: minikube
+            extraEnv:
+              EMIT_KSM_V1_METRICS: "false"
+              EMIT_KSM_V1_METRICS_ONLY: "true"
+              LOG_LEVEL: warn #error
+          prometheus:
+            internal:
+              enabled: false
+            external:
+              enabled: true
+              url: "http:http://prometheus.kcan.io"
+          ui:
+            enabled: true
+          metrics:
+            serviceMonitor:
+              enabled: false
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: opencost
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
